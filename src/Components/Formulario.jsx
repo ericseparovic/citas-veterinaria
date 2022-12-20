@@ -7,7 +7,7 @@ function Formulario() {
         <span className="text-indigo-600 font-bold mb-10">Administralos</span>
       </p>
 
-      <form className="bg-white shadow-md rounded-lg py-10 px-5">
+      <form className="bg-white shadow-md rounded-lg py-10 px-5 mt-10 mb-10">
         <div className="mb-5">
           <label
             className="block text-gray-700 uppercase font-bold"
@@ -71,8 +71,17 @@ function Formulario() {
           >
             Sintomas
           </label>
-          <textarea id="sintomas" placeholder="Describe los sitomas" />
+          <textarea
+            id="sintomas"
+            placeholder="Describe los sitomas"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          />
         </div>
+        <input
+          type="submit"
+          className="bg-indigo-600 hover:bg-indigo-700 cursor-pointer w-full p-3 text-white uppercase font-bold transition-all"
+          value="Agregar paciente"
+        />
       </form>
     </div>
   );
