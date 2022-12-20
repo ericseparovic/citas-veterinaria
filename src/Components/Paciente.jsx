@@ -1,6 +1,6 @@
 function Paciente() {
   return (
-    <div className="mt-10 bg-white ml-3 shadow-md px-4 py-10 rounded-xl">
+    <div className="mx-5 mt-10 bg-white ml-3 shadow-md px-4 py-10 rounded-xl">
       <p className="font-bold mb-3 text-gray-700 uppercase">
         Nombre: <span className="font-normal normal-case">Iker</span>
       </p>
