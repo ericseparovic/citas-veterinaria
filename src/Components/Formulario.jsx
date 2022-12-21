@@ -1,11 +1,43 @@
 import { useState } from "react";
 
-function Formulario() {
+function Formulario({ setPacientes, pacientes }) {
   const [nombre, setNombre] = useState("");
   const [propietario, setPropietario] = useState("");
   const [email, setEmail] = useState("");
   const [fecha, setFecha] = useState("");
   const [sintomas, setSintomas] = useState("");
+
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //Validacion formulario
+    if ([nombre, propietario, email, fecha, sintomas].includes("")) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+
+    //Objeto paciente
+    const objPaciente = {
+      nombre,
+      propietario,
+      email,
+      fecha,
+      sintomas,
+    };
+
+    // Agrega objeto paciente en el arreglo de pacientes
+    setPacientes([...pacientes, objPaciente]);
+
+    //Reinicia el formulario
+    setNombre("");
+    setPropietario("");
+    setEmail("");
+    setFecha("");
+    setSintomas("");
+  };
 
   return (
     <div className="md:w-1/2 lg:w-2/5">
@@ -15,7 +47,16 @@ function Formulario() {
         <span className="text-indigo-600 font-bold mb-10">Administralos</span>
       </p>
 
-      <form className="bg-white shadow-md rounded-lg py-10 px-5 mt-10 mb-10 mx-5">
+      <form
+        className="bg-white shadow-md rounded-lg py-10 px-5 mt-10 mb-10 mx-5"
+        onSubmit={handleSubmit}
+      >
+        {error && (
+          <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3">
+            <p>Todos los campos son obligatorios</p>
+          </div>
+        )}
+
         <div className="mb-5">
           <label
             className="block text-gray-700 uppercase font-bold"
