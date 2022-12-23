@@ -1,4 +1,4 @@
-function Paciente({ paciente }) {
+function Paciente({ paciente, setPaciente }) {
   const { nombre, propietario, email, fecha, sintomas } = paciente;
 
   return (
@@ -24,6 +24,7 @@ function Paciente({ paciente }) {
         <button
           type="button"
           className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded uppercase"
+          onClick={() => setPaciente(paciente)}
         >
           Editar
         </button>
