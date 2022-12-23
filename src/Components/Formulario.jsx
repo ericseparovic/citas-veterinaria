@@ -44,11 +44,24 @@ function Formulario({ setPacientes, pacientes, paciente }) {
       email,
       fecha,
       sintomas,
-      id: generarId(),
     };
 
-    // Agrega objeto paciente en el arreglo de pacientes
-    setPacientes([...pacientes, objPaciente]);
+    //Actualiza paciente si se esta editando
+    if (paciente.id) {
+      //Edita registro
+      objPaciente.id = paciente.id;
+
+      const pacientesActualizados = pacientes.map((pacienteState) =>
+        pacienteState.id === paciente.id ? objPaciente : pacienteState
+      );
+
+      setPacientes(pacientesActualizados);
+    } else {
+      //Nuevo registro
+      // Agrega objeto paciente en el arreglo de pacientes
+      objPaciente.id = generarId();
+      setPacientes([...pacientes, objPaciente]);
+    }
 
     //Reinicia el formulario
     setNombre("");
