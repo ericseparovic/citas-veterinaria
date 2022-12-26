@@ -4,9 +4,14 @@ import Formulario from "./Components/Formulario";
 import ListadoPacientes from "./Components/ListadoPacientes";
 
 function App() {
-  const [pacientes, setPacientes] = useState([]);
+  const [pacientes, setPacientes] = useState(
+    JSON.parse(localStorage.getItem("pacientes")) ?? []
+  );
   const [paciente, setPaciente] = useState({});
 
+  //Se ejecuta una sola vez cuando el componente esta listo
+
+  // Agrega array pacientes al local storage o lo actualiza si cambio  el estado
   useEffect(() => {
     localStorage.setItem("pacientes", JSON.stringify(pacientes));
   }, [pacientes]);
